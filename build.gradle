@@ -26,20 +26,25 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	implementation 'io.jsonwebtoken:jjwt-api:0.12.3'
-	implementation 'io.jsonwebtoken:jjwt-impl:0.12.3'
-	implementation 'io.jsonwebtoken:jjwt-jackson:0.12.3'
+
+	/* jwt관련 의존성 : json web token을 더 만들기 쉽게 해주는 라이브러리 */
+	implementation 'io.jsonwebtoken:jjwt-api:0.12.5' //jjwt-api
+	implementation 'io.jsonwebtoken:jjwt-impl:0.12.5' //jjwt-api의 구현체 -> 두개가 같이 있어야함
+	implementation 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+
+	/* 객체 매핑 라이브러리 : 서로 다른 클래스나 객체 간의 매핑 작업을 쉽게 수행하게 해줌 */
 	implementation 'org.modelmapper:modelmapper:3.2.0'
+
 	implementation 'com.oracle.database.jdbc:ojdbc11:23.3.0.23.09'
-	implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
-	annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jakarta'
+	implementation 'com.querydsl:querydsl-jpa:5.1.0:jakarta' //:jakarta 입력해줘야함. 안그러면 javax버전 사용함
+	annotationProcessor 'com.querydsl:querydsl-apt:5.1.0:jakarta' //어노테이션을 처리
 	annotationProcessor 'jakarta.persistence:jakarta.persistence-api:3.1.0'
 	annotationProcessor 'jakarta.annotation:jakarta.annotation-api:2.1.1'
 
 	compileOnly 'org.projectlombok:lombok'
-	testCompileOnly 'org.projectlombok:lombok'
+	testCompileOnly 'org.projectlombok:lombok' //test에서도 사용
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
-	testImplementation 'com.h2database:h2'
+	testImplementation 'com.h2database:h2' //test에서만 사용
 	annotationProcessor 'org.projectlombok:lombok'
 	testAnnotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
@@ -54,6 +59,8 @@ tasks.named('test') {
 	useJUnitPlatform()
 }
 
+
+/* querydsl에 대한 설정 */
 def querydslDir = "$buildDir/generated/querydsl"
 
 sourceSets {
