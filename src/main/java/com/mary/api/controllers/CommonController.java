@@ -16,17 +16,20 @@ public class CommonController {
     @ExceptionHandler(Exception.class) //모든 예외를 처리한다는 의미의 어노테이션
     public ResponseEntity<JSONData> errorHandler(Exception e) { //errorHandler(Exception e) : 예외가 발생하면 이 메서드가 호출되 예외를 처리하고, 클라이언트에게 적절한 응답을 전달한다.
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR; //기본 내부 서버오류 상태코드 설정
+        Object message = e.getMessage();
 
         if(e instanceof CommonException){
             CommonException commonException = (CommonException) e;
             status = commonException.getStatus();
             //예외가 CommonException 클래스의 인스턴스인 경우, 해당 예외의 상태 코드를 가져와 설정한다
+
+            if (commonException.getMessages() != null) message = commonException.getMessages();
         }
 
-        JSONData<Object> data = new JSONData();
+        JSONData data = new JSONData();
         data.setSuccess(false);
         data.setStatus(status);
-        data.setMessage(e.getMessage());
+        data.setMessage(message);
 
         e.printStackTrace();
 
