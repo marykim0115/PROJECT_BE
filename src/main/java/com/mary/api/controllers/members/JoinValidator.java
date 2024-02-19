@@ -12,6 +12,7 @@ import org.springframework.validation.Validator;
 @Component
 @RequiredArgsConstructor
 public class JoinValidator implements Validator, PasswordValidator, MobileValidator {
+
     private final MemberRepository repository;
 
     @Override

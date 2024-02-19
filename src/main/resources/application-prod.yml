@@ -1,3 +1,4 @@
+# 배포용
 server:
   port: 3001
 
@@ -6,7 +7,7 @@ spring:
   # 데이터 베이스 연결 설정
   datasource:
     driverClassName: oracle.jdbc.driver.OracleDriver
-    url: jdbc:oracle:thin:@localhost:1521:orcl
+    url: jdbc:oracle:thin:@localhost:1521:xe
     username: PROJECT_BE
     password: _aA123456
 

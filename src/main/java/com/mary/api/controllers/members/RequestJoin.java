@@ -25,5 +25,4 @@ public record RequestJoin(
 
         @AssertTrue
         Boolean agree //이용 약관 동의 여부
-) {
-}
+) {}

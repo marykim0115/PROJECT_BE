@@ -1,6 +1,7 @@
 package com.mary.api.controllers.members;
 
 import com.mary.commons.Utils;
+import com.mary.commons.exceptions.BadRequestException;
 import com.mary.commons.rests.JSONData;
 import com.mary.entities.Member;
 import com.mary.models.members.MemberInfo;

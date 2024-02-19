@@ -35,6 +35,7 @@ public class MemberJoinTest {
 
         ObjectMapper om = new ObjectMapper();
         String params = om.writeValueAsString(form);
+        System.out.println(params);
 
         mockMvc.perform(
                 post("/api/v1/member")

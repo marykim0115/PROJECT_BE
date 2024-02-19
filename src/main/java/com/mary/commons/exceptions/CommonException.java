@@ -25,6 +25,7 @@ public class CommonException extends RuntimeException{
     public HttpStatus getStatus() {
         return status;
     }
+
     public Map<String, List<String>> getMessages() {
         return messages;
     }
